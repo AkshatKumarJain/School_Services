@@ -10,8 +10,8 @@ lerna-debug.log*
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# environment variables
-.env                    # Sensitive environment variables
+# # environment variables
+# .env                    # Sensitive environment variables
 .env.*                  # Covers variations like .env.development
 
 # Runtime data
@@ -75,8 +75,8 @@ web_modules/
 
 # dotenv environment variables file
 .env
-.env.test
-.env.production
+# .env.test
+# .env.production
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
