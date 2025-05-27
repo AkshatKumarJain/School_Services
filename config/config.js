@@ -3,8 +3,7 @@ import 'dotenv/config';
 import { z } from 'zod';
 
 const envSchema = z.object({
-  PORT: z.string().transform(Number),
-  JWT_SECRET: z.string().min(1),
+  PORT: z.string().transform(Number)
 });
 
 const result = envSchema.safeParse(process.env);
