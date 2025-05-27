@@ -1,5 +1,5 @@
 import schoolModel from "../models/school.model.js";
-import express from "express"
+// import express from "express"
 
 // app.use(express.json());
 

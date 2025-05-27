@@ -7,7 +7,7 @@ const envSchema = z.object({
   DB_USER: z.string(),
   DB_PASSWORD: z.string(),
   DB_DATABASE: z.string(),
-  PORT: z.string().transform(Number)
+  PORT: z.string().transform(Number),
 });
 
 const result = envSchema.safeParse(process.env);
