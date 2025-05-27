@@ -4,6 +4,8 @@
   "description": "A school management API.",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
+    "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,7 +16,8 @@
   "author": "Akshat Jain",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3"
   },
   "dependencies": {
     "dotenv": "^16.5.0",

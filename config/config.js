@@ -3,13 +3,16 @@ import 'dotenv/config';
 import { z } from 'zod';
 
 const envSchema = z.object({
-  PORT: z.string().transform(Number)
+  PORT: z.string().transform(Number),
 });
 
 const result = envSchema.safeParse(process.env);
 
 if (!result.success) {
-  console.error("Invalid environment variables:", result.error.flatten().fieldErrors);
+  console.error(
+    'Invalid environment variables:',
+    result.error.flatten().fieldErrors,
+  );
   process.exit(1);
 }
 
