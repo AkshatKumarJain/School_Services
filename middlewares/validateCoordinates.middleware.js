@@ -1,12 +1,12 @@
 // import schoolModel from "../models/school.model.js";
-import express from "express";
+import express from 'express';
 const app = express();
 
 app.use(express.json());
 
 export const validateCoordinates = async (req, res, next) => {
   try {
-    const { latitude, longitude } = req.body||req.query;
+    const { latitude, longitude } = req.body || req.query;
 
     if (Number.isFinite(latitude) || Number.isFinite(longitude)) {
       return res.status(400).json({
@@ -27,9 +27,8 @@ export const validateCoordinates = async (req, res, next) => {
     }
 
     next(); // continue if valid
-  }
-  catch (err) {
-    console.error("Coordinate validation error:", err);
+  } catch (err) {
+    console.error('Coordinate validation error:', err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
