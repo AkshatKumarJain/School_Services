@@ -1,10 +1,14 @@
 // import schoolModel from "../models/school.model.js";
+import express from "express";
+const app = express();
+
+app.use(express.json());
 
 export const validateCoordinates = async (req, res, next) => {
   try {
-    const { latitude, longitude } = req.body;
+    const { latitude, longitude } = req.body||req.query;
 
-    if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+    if (Number.isFinite(latitude) || Number.isFinite(longitude)) {
       return res.status(400).json({
         error: 'Latitude and Longitude must both be numbers',
       });
