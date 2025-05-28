@@ -1,14 +1,20 @@
 // import schoolModel from "../models/school.model.js";
-import express from 'express';
+import express from "express";
 const app = express();
 
 app.use(express.json());
 
 export const validateCoordinates = async (req, res, next) => {
   try {
-    const { latitude, longitude } = req.body || req.query;
+    const rawLat = req.body?.latitude ?? req.query?.latitude;
+    const rawLon = req.body?.longitude ?? req.query?.longitude;
 
-    if (Number.isFinite(latitude) || Number.isFinite(longitude)) {
+    const latitude = parseFloat(rawLat);
+    const longitude = parseFloat(rawLon);
+
+    // const { latitude, longitude } = req.body || req.query;
+
+    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
       return res.status(400).json({
         error: 'Latitude and Longitude must both be numbers',
       });
@@ -25,10 +31,13 @@ export const validateCoordinates = async (req, res, next) => {
         error: 'Longitude must be between -180 and 180',
       });
     }
+    req.latitude = latitude;
+    req.longitude = longitude;
 
     next(); // continue if valid
-  } catch (err) {
-    console.error('Coordinate validation error:', err);
+  }
+  catch (err) {
+    console.error("Coordinate validation error:", err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };

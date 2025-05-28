@@ -4,7 +4,7 @@ import schoolModel from '../models/school.model.js';
 // app.use(express.json());
 
 export const getSchoolList = async (req, res) => {
-  const { latitude, longitude } = req.query;
+  const { latitude, longitude } = req;
 
   if (!latitude || !longitude) {
     return res
